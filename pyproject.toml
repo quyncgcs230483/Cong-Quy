@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "video-library-coursework"
+version = "2.0.0"
+description = "Typed Tkinter video library with durable CSV storage and playlist services."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.gui-scripts]
+video-library = "video_library.gui:main"
+
+[project.optional-dependencies]
+dev = ["mypy>=1.17", "pytest>=8.4", "ruff>=0.12"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/video_library"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["video_library"]
